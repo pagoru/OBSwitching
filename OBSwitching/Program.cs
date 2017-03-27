@@ -23,16 +23,16 @@ class Program
         Console.WriteLine("Screen: " + SCREEN_NUMBER);
         var i = new WindowsInput.InputSimulator();
 
-        var key = SCREEN_NUMBER == 1 ? VirtualKeyCode.F1 : VirtualKeyCode.F2;
+        var key = SCREEN_NUMBER == 1 ? VirtualKeyCode.F2 : VirtualKeyCode.F3;
 
         i.Keyboard.KeyDown(VirtualKeyCode.LCONTROL);
-        i.Keyboard.KeyDown(VirtualKeyCode.LMENU);
         i.Keyboard.KeyDown(VirtualKeyCode.LWIN);
+        i.Keyboard.KeyDown(VirtualKeyCode.LMENU);
         i.Keyboard.KeyDown(key);
-        await Task.Delay(50);
-        i.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
+        i.Keyboard.Sleep(50);
+        i.Keyboard.KeyUp(key);
         i.Keyboard.KeyUp(VirtualKeyCode.LMENU);
         i.Keyboard.KeyUp(VirtualKeyCode.LWIN);
-        i.Keyboard.KeyUp(key);
+        i.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
     }
 }
